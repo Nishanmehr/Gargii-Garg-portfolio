@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gargi Garg — Graphic Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --cream: #f5f0e8;
+    --yellow: #f7d94c;
+    --pink: #ff6b9d;
+    --blue: #2d5be3;
+    --orange: #ff5733;
+    --green: #00c48c;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    cursor: none;
+    overflow-x: hidden;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 16px; height: 16px;
+    background: var(--yellow);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-trail {
+    width: 40px; height: 40px;
+    border: 2px solid var(--yellow);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.2s ease;
+    mix-blend-mode: difference;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9000;
+    opacity: 0.5;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    padding: 60px 60px 60px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-right {
+    background: var(--yellow);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-right::before {
+    content: 'GG';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40vw;
+    color: rgba(0,0,0,0.06);
+    position: absolute;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .big-circle {
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 20px rgba(0,0,0,0.15);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+
+  .big-circle-inner {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: var(--yellow);
+    text-align: center;
+    line-height: 1;
+  }
+  .big-circle-inner span {
+    display: block;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--cream);
+    letter-spacing: 4px;
+    margin-top: 4px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--yellow);
+    letter-spacing: 2px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    margin-left: auto;
+  }
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--yellow); }
+
+  .hero-headline {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0;
+  }
+
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(247,217,76,0.12);
+    border: 1px solid rgba(247,217,76,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 24px;
+    width: fit-content;
+    animation: fadeDown 0.8s ease both;
+  }
+  .tag-pill::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--yellow);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  h1.name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4.5rem, 8vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  h1.name .italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--yellow);
+    font-size: 0.65em;
+  }
+
+  .hero-desc {
+    margin-top: 28px;
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.65;
+    max-width: 380px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    margin-top: 36px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: none;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+  .btn-primary { background: var(--yellow); color: var(--black); }
+  .btn-outline { border: 1.5px solid rgba(255,255,255,0.3); color: var(--cream); }
+
+  .hero-bottom {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    background: var(--yellow);
+    overflow: hidden;
+    padding: 14px 0;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 18s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    color: var(--black);
+    padding: 0 28px;
+  }
+  .marquee-track .dot {
+    color: var(--pink);
+    font-size: 1.4rem;
+  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ABOUT */
+  .section { padding: 100px 70px; }
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--yellow);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 0.95;
+    margin-bottom: 28px;
+  }
+  .about-headline em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--pink);
+  }
+  .about-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    opacity: 0.65;
+    margin-bottom: 32px;
+  }
+
+  .about-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '✦';
+    position: absolute;
+    top: -20px; right: -10px;
+    font-size: 8rem;
+    color: rgba(247,217,76,0.06);
+  }
+  .about-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--yellow);
+    margin-bottom: 20px;
+  }
+  .edu-item {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-degree {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .edu-school {
+    font-size: 0.78rem;
+    opacity: 0.5;
+    letter-spacing: 1px;
+  }
+  .edu-year {
+    font-size: 0.72rem;
+    color: var(--yellow);
+    margin-top: 2px;
+  }
+
+  /* SKILLS SECTION */
+  .skills-section {
+    background: var(--cream);
+    color: var(--black);
+    padding: 100px 70px;
+  }
+  .skills-section .section-label { color: var(--pink); }
+  .skills-section .section-label::before { background: var(--pink); }
+
+  .skills-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 0.95;
+    margin-bottom: 60px;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .skill-card {
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: none;
+  }
+  .skill-card:hover { transform: translateY(-6px) rotate(-1deg); }
+  .skill-card:nth-child(1) { background: var(--black); color: var(--cream); }
+  .skill-card:nth-child(2) { background: var(--pink); color: var(--white); }
+  .skill-card:nth-child(3) { background: var(--blue); color: var(--white); }
+  .skill-card:nth-child(4) { background: var(--yellow); color: var(--black); }
+  .skill-card:nth-child(5) { background: var(--orange); color: var(--white); }
+  .skill-card:nth-child(6) { background: var(--green); color: var(--black); }
+
+  .skill-card-icon {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+  }
+  .skill-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .skill-card-desc {
+    font-size: 0.8rem;
+    opacity: 0.75;
+    line-height: 1.6;
+  }
+
+  /* TOOLS */
+  .tools-row {
+    margin-top: 60px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .tool-badge {
+    padding: 12px 24px;
+    border: 2px solid var(--black);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    cursor: none;
+  }
+  .tool-badge:hover {
+    background: var(--black);
+    color: var(--yellow);
+  }
+
+  /* PORTFOLIO / WORK */
+  .work-section { padding: 100px 70px; }
+  .work-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 0.95;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .work-headline em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--blue);
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 16px;
+  }
+
+  .work-card {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    cursor: none;
+    transition: transform 0.4s ease;
+  }
+  .work-card:hover { transform: scale(1.02); }
+  .work-card:hover .work-card-overlay { opacity: 1; }
+
+  .work-card:nth-child(1) { grid-column: 1/8; background: linear-gradient(135deg, #ff6b9d, #c44569); }
+  .work-card:nth-child(2) { grid-column: 8/13; background: linear-gradient(135deg, #2d5be3, #1a3a9c); }
+  .work-card:nth-child(3) { grid-column: 1/5; background: linear-gradient(135deg, #f7d94c, #f4a623); }
+  .work-card:nth-child(4) { grid-column: 5/9; background: linear-gradient(135deg, #0a0a0a, #1a1a2e); }
+  .work-card:nth-child(5) { grid-column: 9/13; background: linear-gradient(135deg, #00c48c, #00855e); }
+
+  .work-card-deco {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    opacity: 0.12;
+    font-family: 'Bebas Neue', sans-serif;
+    pointer-events: none;
+  }
+  .work-card-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 100px;
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 10px;
+    backdrop-filter: blur(10px);
+  }
+  .work-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  .work-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .work-card-overlay span {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 12px 28px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  /* STRENGTHS */
+  .strengths-section {
+    background: #0d0d0d;
+    padding: 100px 70px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .strength-item {
+    padding: 36px 28px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s;
+    cursor: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .strength-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .strength-item:hover::before { transform: scaleX(1); }
+  .strength-item:hover { background: rgba(247,217,76,0.05); }
+  .strength-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: rgba(247,217,76,0.2);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .strength-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    opacity: 0.7;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 100px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-section::before {
+    content: 'HELLO';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 25vw;
+    position: absolute;
+    bottom: -60px; right: -40px;
+    color: rgba(0,0,0,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 6vw, 7rem);
+    line-height: 0.9;
+    margin-bottom: 24px;
+  }
+  .contact-sub {
+    font-size: 1rem;
+    opacity: 0.7;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: rgba(0,0,0,0.07);
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s;
+    cursor: none;
+  }
+  .contact-item:hover { background: rgba(0,0,0,0.13); }
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: var(--black);
+    color: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    padding: 32px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--yellow);
+    letter-spacing: 3px;
+  }
+  .footer-copy {
+    font-size: 0.75rem;
+    opacity: 0.35;
+    letter-spacing: 1px;
+  }
+  .footer-heart {
+    font-size: 0.8rem;
+    opacity: 0.5;
+  }
+  .footer-heart span { color: var(--pink); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* FUN FLOATING SHAPES */
+  .shape {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <nav class="nav">
+      <div class="nav-logo">GG</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="hero-headline">
+      <div class="tag-pill">Available for Work</div>
+      <h1 class="name">
+        GARGI<br>
+        <span class="italic">Garg.</span>
+      </h1>
+      <p class="hero-desc">
+        A creative force in graphic design — Turning brand concepts into creative thoughts and ideas into visual stories.
+      </p>
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-primary">See My Work</a>
+        <a href="#contact" class="btn btn-outline">Let's Talk</a>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="stat">
+        <span class="stat-num">1+</span>
+        <span class="stat-label">Years Learning</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">Ideas</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Unique Voice</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="big-circle">
+      <div class="big-circle-inner">
+        GG
+        <span>DESIGNER</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>BRANDING</span><span class="dot">✦</span>
+    <span>ILLUSTRATION</span><span class="dot">✦</span>
+    <span>POSTER DESIGN</span><span class="dot">✦</span>
+    <span>SOCIAL MEDIA</span><span class="dot">✦</span>
+    <span>DIGITAL GRAPHICS</span><span class="dot">✦</span>
+    <span>TYPOGRAPHY</span><span class="dot">✦</span>
+    <span>ADOBE PHOTOSHOP</span><span class="dot">✦</span>
+    <span>ADOBE ILLUSTRATOR</span><span class="dot">✦</span>
+    <span>CREATIVE DIRECTION</span><span class="dot">✦</span>
+    <!-- Duplicate for seamless loop -->
+    <span>BRANDING</span><span class="dot">✦</span>
+    <span>ILLUSTRATION</span><span class="dot">✦</span>
+    <span>POSTER DESIGN</span><span class="dot">✦</span>
+    <span>SOCIAL MEDIA</span><span class="dot">✦</span>
+    <span>DIGITAL GRAPHICS</span><span class="dot">✦</span>
+    <span>TYPOGRAPHY</span><span class="dot">✦</span>
+    <span>ADOBE PHOTOSHOP</span><span class="dot">✦</span>
+    <span>ADOBE ILLUSTRATOR</span><span class="dot">✦</span>
+    <span>CREATIVE DIRECTION</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="section-label">About Me</div>
+      <h2 class="about-headline">
+        DESIGN IS<br>
+        <em>my language.</em>
+      </h2>
+      <p class="about-text">
+        I'm Gargi — a graphic designer who thrives at the intersection of art and strategy. 
+        With a background in Business Administration and specialized training in 3D Animation & 
+        Graphic Design, I bring both creative instinct and strategic thinking to every project.
+      </p>
+      <p class="about-text">
+        Whether it's crafting a bold brand identity, a scroll-stopping social post, or 
+        a thought-provoking poster — I obsess over every pixel, every curve, every color.
+      </p>
+    </div>
+
+    <div class="about-card reveal">
+      <h3>Education</h3>
+
+      <div class="edu-item">
+        <div class="edu-degree">Diploma in 3D Animation & Graphic Design</div>
+        <div class="edu-school">AAFT University</div>
+        <div class="edu-year">2025 – 2026 · </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-degree">Bachelor of Business Administration</div>
+        <div class="edu-school">CCS University</div>
+        <div class="edu-year">2021 – 2024 · Graduated</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-degree">12th — Science (CBSE)</div>
+        <div class="edu-school">Heritage Academy, CBSE</div>
+        <div class="edu-year">2020</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section class="skills-section" id="skills">
+  <div class="section-label">What I Do</div>
+  <h2 class="skills-headline">MY SKILL SET</h2>
+
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🎨</div>
+      <div class="skill-card-title">Adobe Photoshop</div>
+      <div class="skill-card-desc">Photo manipulation, digital painting, compositing & visual effects.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">✏️</div>
+      <div class="skill-card-title">Adobe Illustrator</div>
+      <div class="skill-card-desc">Vector art, logo design, icon systems & scalable illustrations.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">💡</div>
+      <div class="skill-card-title">Branding & Identity</div>
+      <div class="skill-card-desc">Brand systems, visual identity, style guides & brand voice.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">📱</div>
+      <div class="skill-card-title">Social Media Design</div>
+      <div class="skill-card-desc">Thumb-stopping posts, reels covers, stories & campaign creatives.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🖼️</div>
+      <div class="skill-card-title">Poster Design</div>
+      <div class="skill-card-desc">Event posters, advertising, editorial layouts & print-ready files.</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">⚡</div>
+      <div class="skill-card-title">Digital Graphics</div>
+      <div class="skill-card-desc">UI assets, web banners, digital ads & interactive media design.</div>
+    </div>
+  </div>
+
+  <div class="tools-row reveal">
+    <div class="tool-badge">Adobe Photoshop</div>
+    <div class="tool-badge">Adobe Illustrator</div>
+    <div class="tool-badge">Canva</div>
+    <div class="tool-badge">Figma (Basic)</div>
+    <div class="tool-badge">Color Theory</div>
+    <div class="tool-badge">Typography</div>
+    <div class="tool-badge">Layout Design</div>
+  </div>
+</section>
+
+<!-- ── WORK ── -->
+<section class="work-section" id="work">
+  <div class="section-label">Portfolio</div>
+  <h2 class="work-headline">
+    SELECTED <em>Works</em>
+  </h2>
+
+  <div class="work-grid">
+
+  <a href="brand.html">
+    <div class="work-card reveal">
+      <div class="work-card-deco">BRAND</div>
+      <div class="work-card-tag">Branding</div>
+      <div class="work-card-title">Brand Identity Design</div>
+      <div class="work-card-overlay">
+        <span>View Project →</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+    <div class="work-card reveal">
+      <div class="work-card-deco">POST</div>
+      <div class="work-card-tag">Social Media</div>
+      <div class="work-card-title">Social Media Campaign</div>
+      <div class="work-card-overlay"><span>View Project →</span></div>
+    </div>
+
+    <div class="work-card reveal">
+      <div class="work-card-deco">⭐</div>
+      <div class="work-card-tag">Poster</div>
+      <div class="work-card-title">Event Poster Series</div>
+      <div class="work-card-overlay"><span>View Project →</span></div>
+    </div>
+
+    <div class="work-card reveal">
+      <div class="work-card-deco">BANNERS</div>
+      <div class="work-card-tag">BANNERS</div>
+      <div class="work-card-title">Website Banners</div>
+      <div class="work-card-overlay"><span>View Project →</span></div>
+    </div>
+
+     <div class="work-card reveal">
+      <div class="work-card-deco">RANDOM</div>
+      <div class="work-card-tag">RANDOM</div>
+      <div class="work-card-title">Additional Projects</div>
+      <div class="work-card-overlay"><span>View Project →</span></div>
+    </div>
+
+    <div class="work-card reveal">
+      <div class="work-card-deco">AD</div>
+      <div class="work-card-tag">Advertising</div>
+      <div class="work-card-title">Digital Ad Creative</div>
+      <div class="work-card-overlay"><span>View Project →</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRENGTHS ── -->
+<section class="strengths-section" id="strengths">
+  <div class="section-label">Key Strengths</div>
+  <h2 class="about-headline reveal" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5vw,5.5rem);line-height:.95;margin-bottom:0;">
+    WHAT MAKES ME <span style="color:var(--yellow);">ME</span>
+  </h2>
+
+  <div class="strengths-grid">
+    <div class="strength-item reveal">
+      <div class="strength-num">01</div>
+      <div class="strength-text">Strong eye for aesthetics, color theory, and typography that captivates.</div>
+    </div>
+    <div class="strength-item reveal">
+      <div class="strength-num">02</div>
+      <div class="strength-text">Translating brand concepts into compelling, memorable visuals.</div>
+    </div>
+    <div class="strength-item reveal">
+      <div class="strength-num">03</div>
+      <div class="strength-text">Quick learner who adapts effortlessly to diverse design briefs.</div>
+    </div>
+    <div class="strength-item reveal">
+      <div class="strength-num">04</div>
+      <div class="strength-text">Effective communicator with a client-focused, collaborative mindset.</div>
+    </div>
+    <div class="strength-item reveal">
+      <div class="strength-num">05</div>
+      <div class="strength-text">Passionate about staying ahead of the curve with design trends.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-label" style="color:rgba(0,0,0,0.5);">Let's Create Together</div>
+      <h2 class="contact-headline">
+        GOT A<br>
+        PROJECT<br>
+        IN MIND?
+      </h2>
+      <p class="contact-sub">
+        Whether you need a brand identity, a scroll-stopping campaign, or a poster 
+        that makes people stop and stare — I'm your designer. Let's make something amazing.
+      </p>
+      <a href="mailto:ggargi1812@gmail.com" class="btn btn-primary" style="display:inline-flex;background:var(--black);color:var(--yellow);">
+        Send Me a Message ✉
+      </a>
+    </div>
+
+    <div class="contact-info reveal">
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <div>
+          <div style="font-size:0.72rem;opacity:0.55;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;">Email</div>
+          ggargi1812@gmail.com
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div style="font-size:0.72rem;opacity:0.55;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;">Phone</div>
+          +91 8791145139
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div style="font-size:0.72rem;opacity:0.55;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;">Location</div>
+          India · Open to Remote
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🎓</div>
+        <div>
+          <div style="font-size:0.72rem;opacity:0.55;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;">Currently</div>
+          AAFT University, 2025–26
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">GARGI GARG</div>
+  <div class="footer-copy">© 2025 All rights reserved</div>
+  <div class="footer-heart">Made with <span>♥</span> & lots of Photoshop</div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const trail = document.getElementById('cursorTrail');
+  let mouseX = 0, mouseY = 0, trailX = 0, trailY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX - 8 + 'px';
+    cursor.style.top = mouseY - 8 + 'px';
+  });
+
+  function animateTrail() {
+    trailX += (mouseX - trailX) * 0.12;
+    trailY += (mouseY - trailY) * 0.12;
+    trail.style.left = trailX - 20 + 'px';
+    trail.style.top = trailY - 20 + 'px';
+    requestAnimationFrame(animateTrail);
+  }
+  animateTrail();
+
+  document.querySelectorAll('a, button, .btn, .skill-card, .work-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
+    el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
