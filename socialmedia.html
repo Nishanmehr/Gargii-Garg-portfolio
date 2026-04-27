@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Social Media Work</title>
+
+<style>
+body {
+  background: #0a0a0a;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+</style>
+
+</head>
+<body>
+
+<div class="gallery">
+  <img src="images/socialmedia/1 SM.png">
+  <img src="images/socialmedia/2 SM.png">
+  <img src="images/socialmedia/3 SM.png">
+  <img src="images/socialmedia/4 SM.png">
+  <img src="images/socialmedia/5 SM.png">
+  <img src="images/socialmedia/6 SM.png">
+  <img src="images/socialmedia/7 SM.png">
+  <img src="images/socialmedia/8 SM.png">
+  <img src="images/socialmedia/9 SM.png">
+  <img src="images/socialmedia/10 SM.png">
+  <img src="images/socialmedia/11 SM.png">
+  <img src="images/socialmedia/12 SM.png">
+  <img src="images/socialmedia/13 SM.png">
+  <img src="images/socialmedia/14 SM.png">
+  <img src="images/socialmedia/15 SM.png">
+  <img src="images/socialmedia/16 SM.png">
+</div>
+
+</body>
+</html>
+<script>
+const images = document.querySelectorAll('.gallery img');
+
+images.forEach(img => {
+  img.addEventListener('click', () => {
+
+    // create overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.background = 'rgba(0,0,0,0.9)';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = 9999;
+
+    // create big image
+    const bigImg = document.createElement('img');
+    bigImg.src = img.src;
+    bigImg.style.maxWidth = '90%';
+    bigImg.style.maxHeight = '90%';
+    bigImg.style.borderRadius = '10px';
+
+    overlay.appendChild(bigImg);
+
+    // close on click
+    overlay.addEventListener('click', () => {
+      overlay.remove();
+    });
+
+    document.body.appendChild(overlay);
+  });
+});
+</script>
+</body>
+</html>

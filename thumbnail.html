@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Thumbnails</title>
+
+<style>
+body {
+  background: #0a0a0a;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+</style>
+
+</head>
+<body>
+
+<div class="gallery">
+  <img src="images/thumbnail/thumnail 1.png">
+  <img src="images/thumbnail/thumnail 2.png">
+  <img src="images/thumbnail/thumnail 3.png">
+  <img src="images/thumbnail/thumnail 4.png">
+</div>
+
+</body>
+</html>
+<script>
+const images = document.querySelectorAll('.gallery img');
+
+images.forEach(img => {
+  img.addEventListener('click', () => {
+
+    // create overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.background = 'rgba(0,0,0,0.9)';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = 9999;
+
+    // create big image
+    const bigImg = document.createElement('img');
+    bigImg.src = img.src;
+    bigImg.style.maxWidth = '90%';
+    bigImg.style.maxHeight = '90%';
+    bigImg.style.borderRadius = '10px';
+
+    overlay.appendChild(bigImg);
+
+    // close on click
+    overlay.addEventListener('click', () => {
+      overlay.remove();
+    });
+
+    document.body.appendChild(overlay);
+  });
+});
+</script>
+</body>
+</html>
