@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Banners | Portfolio</title>
+
+<style>
+  body {
+    background: #0a0a0a;
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px;
+  }
+
+  .gallery img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  /* FULL VIEW */
+  .popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .popup img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+  }
+
+  .popup.active {
+    display: flex;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="gallery">
+  <img src="images/banners/BANNER 1.png">
+  <img src="images/banners/BANNER 2.png">
+  <img src="images/banners/BANNER 3.png">
+  <img src="images/banners/BANNER 4.png">
+  <img src="images/banners/BANNER 5.png">
+  <img src="images/banners/BANNER 6.png">
+  <img src="images/banners/BANNER 7.png">
+  <img src="images/banners/BANNER 8.png">
+</div>
+
+<div class="popup" id="popup">
+  <img id="popupImg">
+</div>
+
+<script>
+  const images = document.querySelectorAll('.gallery img');
+  const popup = document.getElementById('popup');
+  const popupImg = document.getElementById('popupImg');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      popup.classList.add('active');
+      popupImg.src = img.src;
+    });
+  });
+
+  popup.addEventListener('click', () => {
+    popup.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>

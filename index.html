@@ -733,6 +733,56 @@
     pointer-events: none;
     z-index: 0;
   }
+  /* FIX GRID STRUCTURE */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.work-grid a {
+  display: block;
+}
+
+/* BRAND (BIG) */
+.work-grid a:nth-child(1) .work-card {
+  grid-column: 1 / 8;
+  min-height: 320px;
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+}
+
+/* SOCIAL */
+.work-grid a:nth-child(2) .work-card {
+  grid-column: 8 / 13;
+  min-height: 320px;
+  background: linear-gradient(135deg, #2d5be3, #1a3a9c);
+}
+
+/* POSTERS */
+.work-grid a:nth-child(3) .work-card {
+  grid-column: 1 / 5;
+  min-height: 260px;
+  background: linear-gradient(135deg, #f7d94c, #f4a623);
+}
+
+/* THUMBNAILS */
+.work-grid a:nth-child(4) .work-card {
+  grid-column: 5 / 9;
+  min-height: 260px;
+  background: linear-gradient(135deg, #8e44ad, #5e3370);
+}
+
+/* TRAVEL */
+.work-grid a:nth-child(5) .work-card {
+  grid-column: 9 / 13;
+  min-height: 260px;
+  background: linear-gradient(135deg, #00c48c, #00855e);
+}
+.work-grid a:nth-child(6) .work-card {
+  grid-column: 1 / 13;
+  min-height: 260px;
+  background: linear-gradient(135deg, #ff5733, #c70039);
+}
 </style>
 </head>
 <body>
@@ -922,60 +972,60 @@
 
   <div class="work-grid">
 
-  <a href="brand.html">
-    <div class="work-card reveal">
-      <div class="work-card-deco">BRAND</div>
-      <div class="work-card-tag">Branding</div>
-      <div class="work-card-title">Brand Identity Design</div>
-      <div class="work-card-overlay">
-        <span>View Project →</span>
+    <a href="brand.html">
+      <div class="work-card reveal">
+        <div class="work-card-deco">BRAND</div>
+        <div class="work-card-tag">Branding</div>
+        <div class="work-card-title">Brand Identity Design</div>
+        <div class="work-card-overlay"><span>View Project →</span></div>
       </div>
-    </div>
-  </a>
-
-</div>
+    </a>
 
     <a href="socialmedia.html">
-  <div class="work-card reveal">
-    <div class="work-card-deco">POST</div>
-    <div class="work-card-tag">Social Media</div>
-    <div class="work-card-title">Social Media Campaign</div>
-    <div class="work-card-overlay"><span>View Project →</span></div>
-  </div>
-</a>
+      <div class="work-card reveal">
+        <div class="work-card-deco">POST</div>
+        <div class="work-card-tag">Social Media</div>
+        <div class="work-card-title">Social Media Campaign</div>
+        <div class="work-card-overlay"><span>View Project →</span></div>
+      </div>
+    </a>
 
     <a href="posters.html">
-  <div class="work-card reveal">
-    <div class="work-card-deco">⭐</div>
-    <div class="work-card-tag">Poster</div>
-    <div class="work-card-title">Event Poster Series</div>
-    <div class="work-card-overlay"><span>View Project →</span></div>
-  </div>
-</a>
+      <div class="work-card reveal">
+        <div class="work-card-deco">POSTER</div>
+        <div class="work-card-tag">Poster</div>
+        <div class="work-card-title">Event Poster Series</div>
+        <div class="work-card-overlay"><span>View Project →</span></div>
+      </div>
+    </a>
 
     <a href="thumbnail.html">
+      <div class="work-card reveal">
+        <div class="work-card-deco">THUMB</div>
+        <div class="work-card-tag">YouTube</div>
+        <div class="work-card-title">Thumbnails</div>
+        <div class="work-card-overlay"><span>View Project →</span></div>
+      </div>
+    </a>
+
+    <a href="travel.html">
+      <div class="work-card reveal">
+        <div class="work-card-deco">TRAVEL</div>
+        <div class="work-card-tag">Photography</div>
+        <div class="work-card-title">Travel Shots</div>
+        <div class="work-card-overlay"><span>View Project →</span></div>
+      </div>
+    </a>
+
+    <a href="banners.html">
   <div class="work-card reveal">
-    <div class="work-card-deco">THUMB</div>
-    <div class="work-card-tag">YouTube</div>
-    <div class="work-card-title">Thumbnails</div>
-    <div class="work-card-overlay"><span>View Project →</span></div>
-  </div>
-</a>
-     <a href="travel.html">
-  <div class="work-card reveal">
-    <div class="work-card-deco">TRAVEL</div>
-    <div class="work-card-tag">Photography</div>
-    <div class="work-card-title">Travel Shots</div>
+    <div class="work-card-deco">BANNER</div>
+    <div class="work-card-tag">Ads</div>
+    <div class="work-card-title">Website Banners</div>
     <div class="work-card-overlay"><span>View Project →</span></div>
   </div>
 </a>
 
-    <div class="work-card reveal">
-      <div class="work-card-deco"></div>
-      <div class="work-card-tag">Travel</div>
-      <div class="work-card-title">Digital Ad Creative</div>
-      <div class="work-card-overlay"><span>View Project →</span></div>
-    </div>
   </div>
 </section>
 
