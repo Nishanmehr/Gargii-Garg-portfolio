@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T-Shirt Designs</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #0a0a0a;
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 30px;
+    letter-spacing: 2px;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 60px 60px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 12px;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>T-SHIRT DESIGNS</h1>
+
+<div class="gallery">
+<img src="images/tshirt/ts1.png">
+<img src="images/tshirt/ts2.png">
+<img src="images/tshirt/ts3.png">
+<img src="images/tshirt/ts4.png">
+<img src="images/tshirt/ts5.png">
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeImg()">
+  <img id="lightImg">
+</div>
+
+<script>
+const images = document.querySelectorAll('.gallery img');
+
+images.forEach(img => {
+  img.addEventListener('click', () => {
+
+    // create overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.background = 'rgba(0,0,0,0.9)';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = 9999;
+
+    // create big image
+    const bigImg = document.createElement('img');
+    bigImg.src = img.src;
+    bigImg.style.maxWidth = '90%';
+    bigImg.style.maxHeight = '90%';
+    bigImg.style.borderRadius = '10px';
+
+    overlay.appendChild(bigImg);
+
+    // close on click
+    overlay.addEventListener('click', () => {
+      overlay.remove();
+    });
+
+    document.body.appendChild(overlay);
+  });
+});
+</script>
+</body>
+</html>
